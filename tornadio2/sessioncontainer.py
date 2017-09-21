@@ -108,6 +108,8 @@ class SessionContainer(object):
         `session_id`
             Session identifier
         """
+        if not isinstance(session_id, bytes):
+            session_id = session_id.encode('utf-8')
         return self._items.get(session_id, None)
 
     def remove(self, session_id):
